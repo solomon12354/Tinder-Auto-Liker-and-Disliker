@@ -8,7 +8,7 @@ from pathlib import Path
 import sys
 
 yourPhoneNumber = '' #Add your phone number here.
-
+yourEmail = '' #Add your Email here.
 
 class SMSAuthException(BaseException):
     pass
@@ -66,7 +66,7 @@ class TinderSMSAuth(object):
             emailoptresponse = input("Check your email and input the verification code just sent to you: ")
             refreshtoken = response["validateEmailOtpState"]["refreshToken"]
             if self.email is None:
-                self.email = input("Input your email: ")
+                self.email = yourEmail
             messageresponse = AuthGatewayRequest(email_otp=EmailOtp(otp=emailoptresponse, email=self.email, refresh_token=refreshtoken))
             seconds += random.uniform(30, 90)
             header_timer = {"app-session-time-elapsed": format(seconds, ".3f")}
@@ -74,7 +74,7 @@ class TinderSMSAuth(object):
         elif "getEmailState" in response.keys():
             refreshtoken = response['getEmailState']['refreshToken']
             if self.email is None:
-                self.email = input("Input your email: ")
+                self.email = yourEmail
             seconds += random.uniform(30, 90)
             header_timer = {"app-session-time-elapsed": format(seconds, ".3f")}
             messageresponse = AuthGatewayRequest(email=Email(email=self.email, refresh_token=refreshtoken))
@@ -82,7 +82,7 @@ class TinderSMSAuth(object):
         elif "error" in response.keys() and response["error"]["message"] == 'INVALID_REFRESH_TOKEN':
             print("Refresh token error, restarting auth")
             
-            phonenumber = input("phone number (starting with 1, numbers only): ")
+            phonenumber = yourPhoneNumber
             self.phonenumber = phonenumber
             messageresponse = AuthGatewayRequest(phone=Phone(phone=self.phonenumber))
             seconds += random.uniform(30, 90)
@@ -104,7 +104,7 @@ class TinderSMSAuth(object):
             print("Attempting to refresh auth token with saved refresh token")
             messageout = AuthGatewayRequest(get_initial_state=GetInitialState(refresh_token=self.refreshtoken))
         else:
-            phonenumber = '886979058957'
+            phonenumber = yourPhoneNumber
             self.phonenumber = phonenumber
             messageout = AuthGatewayRequest(phone=Phone(phone=self.phonenumber))
         seconds = random.uniform(100, 250)
@@ -144,4 +144,4 @@ if __name__ == '__main__':
         emailaddy = sys.argv[1]
     else:
         emailaddy = None
-    TinderSMSAuth(email='',phone=yourPhoneNumber)
+    TinderSMSAuth(email=yourEmail,phone=yourPhoneNumber)
