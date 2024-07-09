@@ -19,4 +19,8 @@
 6. 如果女生的照片不超過兩張或是分數過低，左滑，反之，右滑。
 7. 繼續找下一個配對對象。
 
-我的AI Model的下載網址在這，由於檔案過大，所以放在雲端: https://ttuedutw-my.sharepoint.com/:u:/g/personal/410806228_o365_ttu_edu_tw/Eehh-NZvRvhInWdOgulHO3MBfMxQkKfB3Df2CJIcVcqD7w?e=fiAfge
+我的AI Model的下載網址在這，由於檔案過大，所以放在雲端: 
+Epoch 9  : https://ttuedutw-my.sharepoint.com/:u:/g/personal/410806228_o365_ttu_edu_tw/Eehh-NZvRvhInWdOgulHO3MBfMxQkKfB3Df2CJIcVcqD7w?e=h6lnJG
+Epoch 17 : https://ttuedutw-my.sharepoint.com/:u:/g/personal/410806228_o365_ttu_edu_tw/EYyPHPu_paNEhZ2a8XxRZUoBwB7At6ZBEZExxdS8RzZAzQ?e=mJp1qi
+Epoch 37 : 
+這個是epoch 37的圖表 (前17次的照片沒有存，這個是17~37之間的訓練圖表): <img src="https://github.com/solomon12354/Tinder-Auto-Liker-and-Disliker/blob/main/training_metrics_plot.png?raw=true"></img>
