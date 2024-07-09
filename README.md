@@ -20,6 +20,7 @@
 7. 繼續找下一個配對對象。
 
 我的AI Model的下載網址在這，由於檔案過大，所以放在雲端: 
+
 Epoch 9  : https://ttuedutw-my.sharepoint.com/:u:/g/personal/410806228_o365_ttu_edu_tw/Eehh-NZvRvhInWdOgulHO3MBfMxQkKfB3Df2CJIcVcqD7w?e=h6lnJG
 
 Epoch 17 : https://ttuedutw-my.sharepoint.com/:u:/g/personal/410806228_o365_ttu_edu_tw/EYyPHPu_paNEhZ2a8XxRZUoBwB7At6ZBEZExxdS8RzZAzQ?e=mJp1qi
