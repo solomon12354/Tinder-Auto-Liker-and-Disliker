@@ -25,6 +25,8 @@ Epoch 9  : https://ttuedutw-my.sharepoint.com/:u:/g/personal/410806228_o365_ttu_
 
 Epoch 17 : https://ttuedutw-my.sharepoint.com/:u:/g/personal/410806228_o365_ttu_edu_tw/EYyPHPu_paNEhZ2a8XxRZUoBwB7At6ZBEZExxdS8RzZAzQ?e=mJp1qi
 
-Epoch 37 : 
+Epoch 37 : https://ttuedutw-my.sharepoint.com/:u:/g/personal/410806228_o365_ttu_edu_tw/EWVQfiZdZFNBuQ_a8URSF_sBidJqR64nVtkoiHM2kEC6eA?e=W1pDSD
+
+
 
 這個是epoch 37的圖表 (前17次的照片沒有存，這個是17~37之間的訓練圖表): <img src="https://github.com/solomon12354/Tinder-Auto-Liker-and-Disliker/blob/main/training_metrics_plot.png?raw=true"></img>
