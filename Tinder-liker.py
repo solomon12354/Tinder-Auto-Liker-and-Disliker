@@ -1,5 +1,5 @@
 import time
-from tinderapi import Tinder, TinderProfile, TinderDB, Telegram
+from tinderapi import Tinder, TinderProfile, TinderDB
 import random
 import json
 import codecs
@@ -12,7 +12,11 @@ import os
 
 # Function to load and preprocess the image for prediction
 def load_image(image_path):
-    image = Image.open(image_path)
+    try:
+        image = Image.open(image_path)
+    except Exception as e:
+        print(e)
+        return None
     preprocess = transforms.Compose([
         transforms.Resize(256),
         transforms.CenterCrop(224),
@@ -26,7 +30,8 @@ def load_image(image_path):
 def predict_image(image_path, model, class_names):
     # Load and preprocess the image
     image = load_image(image_path)
-    
+    if(image == None) :
+        return class_names[0], 0
     # Set the model to evaluation mode
     model.eval()
     
@@ -46,7 +51,7 @@ def predict_image(image_path, model, class_names):
         return predicted_label,score
 
 # Load the trained ResNet-50 model
-model_path = 'resnet50_epoch_8.pth'
+model_path = 'models/resnet50_epoch_19.pth'
 checkpoint = torch.load(model_path, map_location=torch.device('cpu'))
 
 # Create a new instance of the ResNet model
@@ -80,10 +85,10 @@ def print_variables(data, indent=0):
         
 #ACCOUNT = json.loads(open('account.json', 'r').read())
 
-AUTH_TOKEN = '' #Input your auth token. 
+AUTH_TOKEN = '' # Write your token here.
 DB = TinderDB()
-threshold = 1
-thresholdOfProfile = 3
+threshold = 3
+thresholdOfProfile = 1
 def liker():
     while True:
         
@@ -107,13 +112,11 @@ def liker():
                 print("Match = ",profile.match)
                 print("Show gender on profile = ",profile.show_gender_on_profile)
                 print(profile.getAll())
-
-                #Modify your like and dislike condition.
+                
                 photoNumber = 0
                 scoreOfThis = 0
-
                 path = 'Photos/' + profile.id + '/'
-                #time.sleep(random.randint(1,2))
+                time.sleep(random.randint(1, 4))
                 for i in os.listdir(path):
                     image_path = path + i
                     class_names = ['not_woman', 'woman']  # Replace with your actual class names
@@ -123,10 +126,11 @@ def liker():
                     if predicted_label == 'woman' and score >= threshold:
                         scoreOfThis = scoreOfThis + score
                         photoNumber = photoNumber + 1
-                scoreOfProfile = 0
-                if(photoNumber > 1):
+                if(photoNumber <= 1):
+                    scoreOfProfile = 0
+                else:
                     scoreOfProfile = float(scoreOfThis/photoNumber)
-                
+
                 print("The score of this profile = ", scoreOfProfile)
                 
                 status = ""
@@ -154,7 +158,6 @@ def liker():
                 time.sleep(random.randint(1, 4))
 
         print('Searching New Matches...')
-        #telegram.sendMessage('Searching for new matches...')
 
 
 if __name__ == '__main__':
