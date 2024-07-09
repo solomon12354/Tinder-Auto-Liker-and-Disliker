@@ -93,7 +93,6 @@ def liker():
     while True:
         
         TinderAcc = Tinder(AUTH_TOKEN)
-        #telegram = Telegram(telegram_key=ACCOUNT['telegram_bot_access_token'], chat_id=ACCOUNT['group_id'])
         matches = TinderAcc.get_potential_matches(verbose=False)
         if matches == -1:
             break
